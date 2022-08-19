@@ -32,19 +32,22 @@ namespace NotepadMinusMinus
             this.components = new System.ComponentModel.Container();
             this.OpenFiles = new System.Windows.Forms.TabControl();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.открытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.папкуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.новыйФайлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.OpenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.FolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.NewFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemSaveFile = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemSaveAll = new System.Windows.Forms.ToolStripMenuItem();
-            this.ещеУсловиеToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ещеУсловиеToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.скопироватьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.вставитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AnotherItemToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.AnotherItemToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.ContextMenuForRtf = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.CopyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.PasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ContextMenuForPng = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.OpenInPaintToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
-            this.contextMenuStrip.SuspendLayout();
+            this.ContextMenuForRtf.SuspendLayout();
+            this.ContextMenuForPng.SuspendLayout();
             this.SuspendLayout();
             // 
             // OpenFiles
@@ -68,48 +71,48 @@ namespace NotepadMinusMinus
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.открытьToolStripMenuItem,
+            this.OpenToolStripMenuItem,
             this.MenuItemSaveFile,
             this.MenuItemSaveAll,
-            this.ещеУсловиеToolStripMenuItem2,
-            this.ещеУсловиеToolStripMenuItem3});
+            this.AnotherItemToolStripMenuItem2,
+            this.AnotherItemToolStripMenuItem3});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1328, 33);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // открытьToolStripMenuItem
+            // OpenToolStripMenuItem
             // 
-            this.открытьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.файлToolStripMenuItem,
-            this.папкуToolStripMenuItem,
-            this.новыйФайлToolStripMenuItem});
-            this.открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
-            this.открытьToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(98, 29);
-            this.открытьToolStripMenuItem.Text = "&Открыть";
+            this.OpenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.FileToolStripMenuItem,
+            this.FolderToolStripMenuItem,
+            this.NewFileToolStripMenuItem});
+            this.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem";
+            this.OpenToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.OpenToolStripMenuItem.Size = new System.Drawing.Size(98, 29);
+            this.OpenToolStripMenuItem.Text = "&Открыть";
             // 
-            // файлToolStripMenuItem
+            // FileToolStripMenuItem
             // 
-            this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(216, 34);
-            this.файлToolStripMenuItem.Text = "Файл";
-            this.файлToolStripMenuItem.Click += new System.EventHandler(this.MenuItemOpenFile_Click);
+            this.FileToolStripMenuItem.Name = "FileToolStripMenuItem";
+            this.FileToolStripMenuItem.Size = new System.Drawing.Size(216, 34);
+            this.FileToolStripMenuItem.Text = "Файл";
+            this.FileToolStripMenuItem.Click += new System.EventHandler(this.MenuItemOpenFile_Click);
             // 
-            // папкуToolStripMenuItem
+            // FolderToolStripMenuItem
             // 
-            this.папкуToolStripMenuItem.Name = "папкуToolStripMenuItem";
-            this.папкуToolStripMenuItem.Size = new System.Drawing.Size(216, 34);
-            this.папкуToolStripMenuItem.Text = "Папку";
-            this.папкуToolStripMenuItem.Click += new System.EventHandler(this.MenuItemOpenDirectory_Click);
+            this.FolderToolStripMenuItem.Name = "FolderToolStripMenuItem";
+            this.FolderToolStripMenuItem.Size = new System.Drawing.Size(216, 34);
+            this.FolderToolStripMenuItem.Text = "Папку";
+            this.FolderToolStripMenuItem.Click += new System.EventHandler(this.MenuItemOpenDirectory_Click);
             // 
-            // новыйФайлToolStripMenuItem
+            // NewFileToolStripMenuItem
             // 
-            this.новыйФайлToolStripMenuItem.Name = "новыйФайлToolStripMenuItem";
-            this.новыйФайлToolStripMenuItem.Size = new System.Drawing.Size(216, 34);
-            this.новыйФайлToolStripMenuItem.Text = "Новый файл";
-            this.новыйФайлToolStripMenuItem.Click += new System.EventHandler(this.MenuItemOpenNewFile_Click);
+            this.NewFileToolStripMenuItem.Name = "NewFileToolStripMenuItem";
+            this.NewFileToolStripMenuItem.Size = new System.Drawing.Size(216, 34);
+            this.NewFileToolStripMenuItem.Text = "Новый файл";
+            this.NewFileToolStripMenuItem.Click += new System.EventHandler(this.MenuItemOpenNewFile_Click);
             // 
             // MenuItemSaveFile
             // 
@@ -128,38 +131,53 @@ namespace NotepadMinusMinus
             this.MenuItemSaveAll.Text = "&Сохранить всё";
             this.MenuItemSaveAll.Click += new System.EventHandler(this.MenuItemSaveAll_Click);
             // 
-            // ещеУсловиеToolStripMenuItem2
+            // AnotherItemToolStripMenuItem2
             // 
-            this.ещеУсловиеToolStripMenuItem2.Name = "ещеУсловиеToolStripMenuItem2";
-            this.ещеУсловиеToolStripMenuItem2.Size = new System.Drawing.Size(132, 29);
-            this.ещеУсловиеToolStripMenuItem2.Text = "Еще условие";
+            this.AnotherItemToolStripMenuItem2.Name = "AnotherItemToolStripMenuItem2";
+            this.AnotherItemToolStripMenuItem2.Size = new System.Drawing.Size(132, 29);
+            this.AnotherItemToolStripMenuItem2.Text = "Еще условие";
             // 
-            // ещеУсловиеToolStripMenuItem3
+            // AnotherItemToolStripMenuItem3
             // 
-            this.ещеУсловиеToolStripMenuItem3.Name = "ещеУсловиеToolStripMenuItem3";
-            this.ещеУсловиеToolStripMenuItem3.Size = new System.Drawing.Size(132, 29);
-            this.ещеУсловиеToolStripMenuItem3.Text = "Еще условие";
+            this.AnotherItemToolStripMenuItem3.Name = "AnotherItemToolStripMenuItem3";
+            this.AnotherItemToolStripMenuItem3.Size = new System.Drawing.Size(132, 29);
+            this.AnotherItemToolStripMenuItem3.Text = "Еще условие";
             // 
-            // contextMenuStrip
+            // ContextMenuForRtf
             // 
-            this.contextMenuStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.скопироватьToolStripMenuItem,
-            this.вставитьToolStripMenuItem});
-            this.contextMenuStrip.Name = "contextMenuStrip1";
-            this.contextMenuStrip.Size = new System.Drawing.Size(241, 101);
+            this.ContextMenuForRtf.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.ContextMenuForRtf.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CopyToolStripMenuItem,
+            this.PasteToolStripMenuItem});
+            this.ContextMenuForRtf.Name = "contextMenuStrip1";
+            this.ContextMenuForRtf.Size = new System.Drawing.Size(193, 68);
             // 
-            // скопироватьToolStripMenuItem
+            // CopyToolStripMenuItem
             // 
-            this.скопироватьToolStripMenuItem.Name = "скопироватьToolStripMenuItem";
-            this.скопироватьToolStripMenuItem.Size = new System.Drawing.Size(240, 32);
-            this.скопироватьToolStripMenuItem.Text = "Скопировать";
+            this.CopyToolStripMenuItem.Name = "CopyToolStripMenuItem";
+            this.CopyToolStripMenuItem.Size = new System.Drawing.Size(192, 32);
+            this.CopyToolStripMenuItem.Text = "Скопировать";
             // 
-            // вставитьToolStripMenuItem
+            // PasteToolStripMenuItem
             // 
-            this.вставитьToolStripMenuItem.Name = "вставитьToolStripMenuItem";
-            this.вставитьToolStripMenuItem.Size = new System.Drawing.Size(240, 32);
-            this.вставитьToolStripMenuItem.Text = "Вставить";
+            this.PasteToolStripMenuItem.Name = "PasteToolStripMenuItem";
+            this.PasteToolStripMenuItem.Size = new System.Drawing.Size(192, 32);
+            this.PasteToolStripMenuItem.Text = "Вставить";
+            // 
+            // ContextMenuForPng
+            // 
+            this.ContextMenuForPng.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.ContextMenuForPng.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.OpenInPaintToolStripMenuItem});
+            this.ContextMenuForPng.Name = "contextMenuForPng";
+            this.ContextMenuForPng.Size = new System.Drawing.Size(241, 69);
+            // 
+            // OpenInPaintToolStripMenuItem
+            // 
+            this.OpenInPaintToolStripMenuItem.Name = "OpenInPaintToolStripMenuItem";
+            this.OpenInPaintToolStripMenuItem.Size = new System.Drawing.Size(240, 32);
+            this.OpenInPaintToolStripMenuItem.Text = "Открыть в Paint";
+            this.OpenInPaintToolStripMenuItem.Click += new System.EventHandler(this.OpenInPaintToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -173,7 +191,8 @@ namespace NotepadMinusMinus
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.contextMenuStrip.ResumeLayout(false);
+            this.ContextMenuForRtf.ResumeLayout(false);
+            this.ContextMenuForPng.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -182,17 +201,19 @@ namespace NotepadMinusMinus
         #endregion
         private System.Windows.Forms.TabControl OpenFiles;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem открытьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem OpenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem MenuItemSaveFile;
         private System.Windows.Forms.ToolStripMenuItem MenuItemSaveAll;
-        private System.Windows.Forms.ToolStripMenuItem ещеУсловиеToolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem ещеУсловиеToolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem папкуToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem новыйФайлToolStripMenuItem;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem скопироватьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem вставитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AnotherItemToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem AnotherItemToolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem FileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem FolderToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem NewFileToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip ContextMenuForRtf;
+        private System.Windows.Forms.ToolStripMenuItem CopyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem PasteToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip ContextMenuForPng;
+        private System.Windows.Forms.ToolStripMenuItem OpenInPaintToolStripMenuItem;
     }
 }
 

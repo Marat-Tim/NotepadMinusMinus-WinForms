@@ -194,5 +194,10 @@ namespace NotepadMinusMinus
                 tab.Close();
             }
         }
+
+        private void OpenInPaintToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
