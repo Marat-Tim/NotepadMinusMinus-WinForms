@@ -40,11 +40,11 @@ namespace NotepadMinusMinus
             this.MenuItemSaveAll = new System.Windows.Forms.ToolStripMenuItem();
             this.ещеУсловиеToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.ещеУсловиеToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.работаетToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.нетToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.скопироватьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.вставитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
-            this.contextMenuStrip1.SuspendLayout();
+            this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // OpenFiles
@@ -140,26 +140,26 @@ namespace NotepadMinusMinus
             this.ещеУсловиеToolStripMenuItem3.Size = new System.Drawing.Size(132, 29);
             this.ещеУсловиеToolStripMenuItem3.Text = "Еще условие";
             // 
-            // contextMenuStrip1
+            // contextMenuStrip
             // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.работаетToolStripMenuItem,
-            this.нетToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(165, 68);
+            this.contextMenuStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.скопироватьToolStripMenuItem,
+            this.вставитьToolStripMenuItem});
+            this.contextMenuStrip.Name = "contextMenuStrip1";
+            this.contextMenuStrip.Size = new System.Drawing.Size(241, 101);
             // 
-            // работаетToolStripMenuItem
+            // скопироватьToolStripMenuItem
             // 
-            this.работаетToolStripMenuItem.Name = "работаетToolStripMenuItem";
-            this.работаетToolStripMenuItem.Size = new System.Drawing.Size(164, 32);
-            this.работаетToolStripMenuItem.Text = "Работает?";
+            this.скопироватьToolStripMenuItem.Name = "скопироватьToolStripMenuItem";
+            this.скопироватьToolStripMenuItem.Size = new System.Drawing.Size(240, 32);
+            this.скопироватьToolStripMenuItem.Text = "Скопировать";
             // 
-            // нетToolStripMenuItem
+            // вставитьToolStripMenuItem
             // 
-            this.нетToolStripMenuItem.Name = "нетToolStripMenuItem";
-            this.нетToolStripMenuItem.Size = new System.Drawing.Size(164, 32);
-            this.нетToolStripMenuItem.Text = "нет";
+            this.вставитьToolStripMenuItem.Name = "вставитьToolStripMenuItem";
+            this.вставитьToolStripMenuItem.Size = new System.Drawing.Size(240, 32);
+            this.вставитьToolStripMenuItem.Text = "Вставить";
             // 
             // MainForm
             // 
@@ -173,7 +173,7 @@ namespace NotepadMinusMinus
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.contextMenuStrip1.ResumeLayout(false);
+            this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -190,9 +190,9 @@ namespace NotepadMinusMinus
         private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem папкуToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem новыйФайлToolStripMenuItem;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem работаетToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem нетToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem скопироватьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem вставитьToolStripMenuItem;
     }
 }
 

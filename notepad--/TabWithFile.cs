@@ -92,9 +92,6 @@ namespace NotepadMinusMinus
         /// <summary>
         /// Сохраняет или создает файл с вкладки в памяти компьютера.
         /// </summary>
-        /// <param name="instructionsForSavingFile">
-        /// Действия для непосредственного сохранения файла в памяти.
-        /// </param>
         public virtual void SaveFile()
         {
             if (Path == null)
@@ -104,6 +101,10 @@ namespace NotepadMinusMinus
                 {
                     return;
                 }
+            }
+            if (!IsSave)
+            {
+                IsSave = true;
             }
         }
 
@@ -132,7 +133,7 @@ namespace NotepadMinusMinus
             var dialog = new SaveFileDialog()
             {
                 InitialDirectory = Constants.InitialDirectory,
-                Filter = $"Файл с конспектом|{Extension}",
+                Filter = $"Файл с конспектом|*{Extension}",
                 FileName = Text[1..]
             };
             if (dialog.ShowDialog() == DialogResult.OK)

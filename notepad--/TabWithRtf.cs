@@ -31,7 +31,14 @@ namespace NotepadMinusMinus
 
         public override void SaveFile()
         {
-            base.SaveFile();
+            if (Path == null)
+            {
+                GetPathByDialog();
+                if (Path == null)
+                {
+                    return;
+                }
+            }
             if (!IsSave)
             {
                 ((RichTextBox)Controls[0]).SaveFile(Path);

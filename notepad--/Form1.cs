@@ -42,11 +42,11 @@ namespace NotepadMinusMinus
         private void CreateNewTab(string path)
         {
             // Проверяем, есть ли такой файл среди открытых
-            foreach (TabWithFile tabPage in OpenFiles.TabPages)
+            foreach (TabWithFile tab in OpenFiles.TabPages)
             {
-                if (path == tabPage.Path)
+                if (path == tab.Path)
                 {
-                    OpenFiles.SelectedTab = tabPage;
+                    OpenFiles.SelectedTab = tab;
                     return;
                 }
             }
