@@ -22,4 +22,9 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Icons\" />
+    <Folder Include="Resources\" />
+  </ItemGroup>
+
 </Project>

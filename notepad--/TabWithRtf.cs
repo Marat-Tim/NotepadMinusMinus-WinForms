@@ -8,8 +8,10 @@ using System.Windows.Forms;
 namespace NotepadMinusMinus
 {
     [ExtensionOfFile(".rtf")]
-    class TabWithRtf : TabWithFile
+    partial class TabWithRtf : TabWithFile
     {
+        public readonly RichTextBox RichTextBox;
+
         public TabWithRtf() : base("Конспект.rtf")
         {
             var richTextBox = new RichTextBox()
@@ -20,12 +22,14 @@ namespace NotepadMinusMinus
                 AcceptsTab = true
             };
             richTextBox.TextChanged += Changed;
+            richTextBox.ContextMenuStrip = CreateContextMenu();
             Controls.Add(richTextBox);
+            this.RichTextBox = richTextBox;
         }
 
         public override void LoadFile(string path)
         {
-            ((RichTextBox)Controls[0]).LoadFile(path);
+            RichTextBox.LoadFile(path);
             base.LoadFile(path);
         }
 
@@ -41,7 +45,7 @@ namespace NotepadMinusMinus
             }
             if (!IsSave)
             {
-                ((RichTextBox)Controls[0]).SaveFile(Path);
+                RichTextBox.SaveFile(Path);
                 IsSave = true;
             }
         }

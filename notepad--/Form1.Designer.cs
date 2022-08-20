@@ -96,21 +96,21 @@ namespace NotepadMinusMinus
             // FileToolStripMenuItem
             // 
             this.FileToolStripMenuItem.Name = "FileToolStripMenuItem";
-            this.FileToolStripMenuItem.Size = new System.Drawing.Size(216, 34);
+            this.FileToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.FileToolStripMenuItem.Text = "Файл";
             this.FileToolStripMenuItem.Click += new System.EventHandler(this.MenuItemOpenFile_Click);
             // 
             // FolderToolStripMenuItem
             // 
             this.FolderToolStripMenuItem.Name = "FolderToolStripMenuItem";
-            this.FolderToolStripMenuItem.Size = new System.Drawing.Size(216, 34);
+            this.FolderToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.FolderToolStripMenuItem.Text = "Папку";
             this.FolderToolStripMenuItem.Click += new System.EventHandler(this.MenuItemOpenDirectory_Click);
             // 
             // NewFileToolStripMenuItem
             // 
             this.NewFileToolStripMenuItem.Name = "NewFileToolStripMenuItem";
-            this.NewFileToolStripMenuItem.Size = new System.Drawing.Size(216, 34);
+            this.NewFileToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.NewFileToolStripMenuItem.Text = "Новый файл";
             this.NewFileToolStripMenuItem.Click += new System.EventHandler(this.MenuItemOpenNewFile_Click);
             // 
@@ -170,12 +170,12 @@ namespace NotepadMinusMinus
             this.ContextMenuForPng.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.OpenInPaintToolStripMenuItem});
             this.ContextMenuForPng.Name = "contextMenuForPng";
-            this.ContextMenuForPng.Size = new System.Drawing.Size(241, 69);
+            this.ContextMenuForPng.Size = new System.Drawing.Size(213, 36);
             // 
             // OpenInPaintToolStripMenuItem
             // 
             this.OpenInPaintToolStripMenuItem.Name = "OpenInPaintToolStripMenuItem";
-            this.OpenInPaintToolStripMenuItem.Size = new System.Drawing.Size(240, 32);
+            this.OpenInPaintToolStripMenuItem.Size = new System.Drawing.Size(212, 32);
             this.OpenInPaintToolStripMenuItem.Text = "Открыть в Paint";
             this.OpenInPaintToolStripMenuItem.Click += new System.EventHandler(this.OpenInPaintToolStripMenuItem_Click);
             // 
