@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace NotepadMinusMinus
 {
@@ -54,5 +55,15 @@ namespace NotepadMinusMinus
             Color.Magenta,
             Color.Black,
         };
+
+        /// <summary>
+        /// Режимы отображения картинок для png файлов, а также иконки и навзания для них.
+        /// </summary>
+        public static readonly (PictureBoxSizeMode, Bitmap, string)[] SizeModesForPng =
+            new (PictureBoxSizeMode, Bitmap, string)[]
+            {
+                (PictureBoxSizeMode.StretchImage, null, "Широкий"),
+                (PictureBoxSizeMode.Zoom, null, "Нормальный"),
+            };
     }
 }

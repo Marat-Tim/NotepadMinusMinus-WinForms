@@ -32,35 +32,6 @@ namespace NotepadMinusMinus
         }
 
         /// <summary>
-        /// Создает кнопку меню с заданными параметрами. 
-        /// Данный метод нужен, чтобы создание элемента меню не занимало несколько строчек и для того, чтобы
-        /// можно было создавать кнопки меню внутри методов AddRange и Add. 
-        /// </summary>
-        /// <param name="text">Текст на кнопке.</param>
-        /// <param name="bitmap">Изображение в левой части кнопки.</param>
-        /// <param name="eventHandler">Действие, происходящее при нажатии на кнопку.</param>
-        /// <param name="style">Стиль текста на кнопке(нужен для меню выбора стиля).</param>
-        /// <param name="color">Цвет текста на кнопке(нужен для меню выбора цвета).</param>
-        /// <returns>Элемент меню.</returns>
-        private ToolStripMenuItem CreateMenuItem(
-            string text,
-            Bitmap bitmap,
-            EventHandler eventHandler,
-            FontStyle style = FontStyle.Regular,
-            Color color = default)
-        {
-            var menuItem = new ToolStripMenuItem()
-            {
-                Text = text,
-                Font = new Font(DefaultFont, style),
-                ForeColor = color,
-                Image = bitmap
-            };
-            menuItem.Click += eventHandler;
-            return menuItem;
-        }
-
-        /// <summary>
         /// Удаляет выделенный текст.
         /// </summary>
         /// <param name="sender"></param>
