@@ -36,7 +36,7 @@ namespace NotepadMinusMinus
             var openInPaintMenuItem = new ToolStripMenuItem()
             {
                 Text = "Открыть в Paint",
-                Image = notepad__.Properties.Resources.Paint
+                Image = Properties.Resources.Paint
             };
             openInPaintMenuItem.Click += OpenWithPaint;
             contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[]

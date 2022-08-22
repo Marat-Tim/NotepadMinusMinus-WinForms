@@ -95,6 +95,7 @@ namespace NotepadMinusMinus
             // 
             // FileToolStripMenuItem
             // 
+            this.FileToolStripMenuItem.Image = global::NotepadMinusMinus.Properties.Resources.File;
             this.FileToolStripMenuItem.Name = "FileToolStripMenuItem";
             this.FileToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.FileToolStripMenuItem.Text = "Файл";
@@ -102,6 +103,7 @@ namespace NotepadMinusMinus
             // 
             // FolderToolStripMenuItem
             // 
+            this.FolderToolStripMenuItem.Image = global::NotepadMinusMinus.Properties.Resources.Folder;
             this.FolderToolStripMenuItem.Name = "FolderToolStripMenuItem";
             this.FolderToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.FolderToolStripMenuItem.Text = "Папку";
@@ -109,6 +111,7 @@ namespace NotepadMinusMinus
             // 
             // NewFileToolStripMenuItem
             // 
+            this.NewFileToolStripMenuItem.Image = global::NotepadMinusMinus.Properties.Resources.Plus;
             this.NewFileToolStripMenuItem.Name = "NewFileToolStripMenuItem";
             this.NewFileToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.NewFileToolStripMenuItem.Text = "Новый файл";

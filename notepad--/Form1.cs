@@ -97,7 +97,7 @@ namespace NotepadMinusMinus
             {
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    foreach (var path in Directory.GetFiles(dialog.SelectedPath, "*", SearchOption.AllDirectories))
+                    foreach (var path in Directory.GetFiles(dialog.SelectedPath))
                     {
                         CreateNewTab(path);
                     }

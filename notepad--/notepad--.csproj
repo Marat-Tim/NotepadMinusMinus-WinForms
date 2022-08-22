@@ -3,9 +3,15 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
-    <RootNamespace>notepad__</RootNamespace>
+    <RootNamespace>NotepadMinusMinus</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Resources\**" />
+    <EmbeddedResource Remove="Resources\**" />
+    <None Remove="Resources\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
@@ -24,7 +30,6 @@
 
   <ItemGroup>
     <Folder Include="Icons\" />
-    <Folder Include="Resources\" />
   </ItemGroup>
 
 </Project>

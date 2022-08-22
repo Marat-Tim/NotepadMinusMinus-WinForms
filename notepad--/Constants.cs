@@ -21,7 +21,7 @@ namespace NotepadMinusMinus
             Directory.GetCurrentDirectory();
 
         /// <summary>
-        /// Шрифт по умолчанию для RTF файлов.
+        /// Шрифт по умолчанию для rtf файлов.
         /// </summary>
         public static readonly Font FontForRtf = new Font("Segoe UI", 10f);
 
@@ -31,5 +31,28 @@ namespace NotepadMinusMinus
         /// "{оставшееся количество символов}... {расширение полностью}" 
         /// </summary>
         public const int MaxNumberOfSymbolsInFileName = 20;
+
+        /// <summary>
+        /// Все стили текста, которые используются в контекстноем меню в rtf файлах.
+        /// </summary>
+        public static readonly FontStyle[] StylesForRtf = new FontStyle[]
+        {
+            FontStyle.Bold,
+            FontStyle.Italic,
+            FontStyle.Underline,
+            FontStyle.Strikeout
+        };
+
+        /// <summary>
+        /// Все цвета, которые используются в контекстноем меню в rtf файлах.
+        /// </summary>
+        public static readonly Color[] ColorsForRtf = new Color[]
+        {
+            Color.Red,
+            Color.Blue,
+            Color.LimeGreen,
+            Color.Magenta,
+            Color.Black,
+        };
     }
 }
