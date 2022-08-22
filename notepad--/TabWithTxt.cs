@@ -9,8 +9,13 @@ using System.Windows.Forms;
 namespace NotepadMinusMinus
 {
     [ExtensionOfFile(".txt")]
-    class TabWithTxt : TabWithFile
+    partial class TabWithTxt : TabWithFile
     {
+        /// <summary>
+        /// Основной элемент данного класса, в котором хранится информация о тексте в файле.
+        /// </summary>
+        public readonly RichTextBox MainRichTextBox;
+
         public TabWithTxt() : base("Конспект.txt")
         {
             var richTextBox = new RichTextBox()
@@ -21,12 +26,14 @@ namespace NotepadMinusMinus
                 AcceptsTab = true
             };
             richTextBox.TextChanged += Changed;
+            richTextBox.ContextMenuStrip = CreateContextMenu();
             Controls.Add(richTextBox);
+            MainRichTextBox = richTextBox;
         }
 
         public override void LoadFile(string path)
         {
-            ((RichTextBox)Controls[0]).Text = File.ReadAllText(path);
+            MainRichTextBox.Text = File.ReadAllText(path);
             base.LoadFile(path);
         }
 
@@ -42,7 +49,7 @@ namespace NotepadMinusMinus
             }
             if (!IsSave)
             {
-                File.WriteAllText(Path, ((RichTextBox)Controls[0]).Text);
+                File.WriteAllText(Path, MainRichTextBox.Text);
                 IsSave = true;
             }
         }

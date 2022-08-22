@@ -10,7 +10,10 @@ namespace NotepadMinusMinus
     [ExtensionOfFile(".rtf")]
     partial class TabWithRtf : TabWithFile
     {
-        public readonly RichTextBox RichTextBox;
+        /// <summary>
+        /// Основной элемент данного класса, в котором хранятся данные из файла.
+        /// </summary>
+        public readonly RichTextBox MainRichTextBox;
 
         public TabWithRtf() : base("Конспект.rtf")
         {
@@ -24,12 +27,12 @@ namespace NotepadMinusMinus
             richTextBox.TextChanged += Changed;
             richTextBox.ContextMenuStrip = CreateContextMenu();
             Controls.Add(richTextBox);
-            this.RichTextBox = richTextBox;
+            MainRichTextBox = richTextBox;
         }
 
         public override void LoadFile(string path)
         {
-            RichTextBox.LoadFile(path);
+            MainRichTextBox.LoadFile(path);
             base.LoadFile(path);
         }
 
@@ -45,7 +48,7 @@ namespace NotepadMinusMinus
             }
             if (!IsSave)
             {
-                RichTextBox.SaveFile(Path);
+                MainRichTextBox.SaveFile(Path);
                 IsSave = true;
             }
         }

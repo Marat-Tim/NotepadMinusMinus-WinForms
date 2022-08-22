@@ -109,7 +109,7 @@ namespace NotepadMinusMinus
             var dialog = new ColorDialog();
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                RichTextBox.SelectionColor = dialog.Color;
+                MainRichTextBox.SelectionColor = dialog.Color;
             }
         }
 
@@ -123,7 +123,7 @@ namespace NotepadMinusMinus
             var dialog = new FontDialog();
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                RichTextBox.SelectionFont = dialog.Font;
+                MainRichTextBox.SelectionFont = dialog.Font;
             }
         }
 
@@ -136,7 +136,7 @@ namespace NotepadMinusMinus
         {
             void ChangeColor(object sender, EventArgs e)
             {
-                RichTextBox.SelectionColor = color;
+                MainRichTextBox.SelectionColor = color;
             }
             return ChangeColor;
         }
@@ -151,7 +151,8 @@ namespace NotepadMinusMinus
             for (int i = 0; i < Constants.StylesForRtf.Length; i++)
             {
                 ((ToolStripMenuItem)((ToolStripMenuItem)sender).DropDownItems[i]).Checked =
-                    RichTextBox.SelectionFont.Style.HasFlag(Constants.StylesForRtf[i]);
+                    MainRichTextBox.SelectionFont != null &&
+                    MainRichTextBox.SelectionFont.Style.HasFlag(Constants.StylesForRtf[i]);
             }
         }
 
@@ -165,8 +166,11 @@ namespace NotepadMinusMinus
         {
             void ChangeFont(object sender, EventArgs e)
             {
-                RichTextBox.SelectionFont =
-                    new Font(RichTextBox.SelectionFont, RichTextBox.SelectionFont.Style ^ style);
+                if (MainRichTextBox.SelectionFont != null)
+                {
+                    MainRichTextBox.SelectionFont =
+                        new Font(MainRichTextBox.SelectionFont, MainRichTextBox.SelectionFont.Style ^ style);
+                }
             }
             return ChangeFont;
         }
@@ -178,7 +182,7 @@ namespace NotepadMinusMinus
         /// <param name="e"></param>
         private void DeleteClick(object sender, EventArgs e)
         {
-            RichTextBox.SelectedRtf = string.Empty;
+            MainRichTextBox.SelectedRtf = string.Empty;
         }
 
         /// <summary>
@@ -188,7 +192,7 @@ namespace NotepadMinusMinus
         /// <param name="e"></param>
         private void SelectAllClick(object sender, EventArgs e)
         {
-            RichTextBox.SelectAll();
+            MainRichTextBox.SelectAll();
         }
 
         /// <summary>
@@ -198,7 +202,7 @@ namespace NotepadMinusMinus
         /// <param name="e"></param>
         private void CopyClick(object sender, EventArgs e)
         {
-            Clipboard.SetData(DataFormats.Rtf, RichTextBox.SelectedRtf);
+            Clipboard.SetData(DataFormats.Rtf, MainRichTextBox.SelectedRtf);
         }
 
         /// <summary>
@@ -210,7 +214,7 @@ namespace NotepadMinusMinus
         {
             if (Clipboard.ContainsText(TextDataFormat.Rtf))
             {
-                RichTextBox.SelectedRtf = Clipboard.GetData(DataFormats.Rtf).ToString();
+                MainRichTextBox.SelectedRtf = Clipboard.GetData(DataFormats.Rtf).ToString();
             }
         }
     }
