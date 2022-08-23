@@ -41,6 +41,11 @@ namespace NotepadMinusMinus
             return contextMenu;
         }
 
+        /// <summary>
+        /// Проверяет какой режим отображения сейчас используется.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DetectSizeMode(object sender, EventArgs e)
         {
             int i = 0;
@@ -52,6 +57,11 @@ namespace NotepadMinusMinus
             }
         }
 
+        /// <summary>
+        /// Создает функцию, которая меняет режим отображения картинки на новый.
+        /// </summary>
+        /// <param name="color">Новый режим отображения.</param>
+        /// <returns>Функция, котороя меняет режим отображения.</returns>
         private EventHandler SizeModeClick(PictureBoxSizeMode sizeMode)
         {
             void ChangeSizeMode(object sender, EventArgs e)

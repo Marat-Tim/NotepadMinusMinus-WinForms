@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,7 +31,12 @@ namespace NotepadMinusMinus
             };
             foreach (var style in Constants.StylesForRtf)
             {
-                menuItemFont.DropDownItems.Add(CreateMenuItem(style.ToString(), null, FontClick(style), style));
+                menuItemFont.DropDownItems.Add(
+                    CreateMenuItem(
+                        style.ToString(),
+                        null,
+                        FontClick(style),
+                        style));
             }
             menuItemFont.DropDownItems.Add(
                 CreateMenuItem("Продвинутое меню", Properties.Resources.Menu, OpenSuperFontMenu));

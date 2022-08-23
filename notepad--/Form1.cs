@@ -195,9 +195,21 @@ namespace NotepadMinusMinus
             }
         }
 
-        private void OpenInPaintToolStripMenuItem_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Создает новую вкладку со скопированным изображениям.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CopiedImageToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+#warning Некоторые фотографии не открываются здесь нормально, например https://img.icons8.com/ios/452/image.png. Я как понял это из за проблем ClipBoard'a
+            if (Clipboard.ContainsImage())
+            {
+                var tab = new TabWithPng();
+                ((PictureBox)tab.Controls[0]).Image = Clipboard.GetImage();
+                OpenFiles.TabPages.Add(tab);
+                OpenFiles.SelectedIndex = OpenFiles.TabCount - 1;
+            }
         }
     }
 }

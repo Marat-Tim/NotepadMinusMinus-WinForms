@@ -66,12 +66,12 @@ namespace NotepadMinusMinus
                 if (!isSave && value)
                 {
                     Text = Text[1..];
-                    ((Control)Parent).Refresh();
+                    Parent.Refresh();
                 }
                 if (isSave && !value)
                 {
                     Text = $"*{Text}";
-                    ((Control)Parent).Refresh();
+                    Parent.Refresh();
                 }
                 isSave = value;
             }

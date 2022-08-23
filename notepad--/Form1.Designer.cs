@@ -29,25 +29,18 @@ namespace NotepadMinusMinus
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.OpenFiles = new System.Windows.Forms.TabControl();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.OpenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NewFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CopiedImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemSaveFile = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemSaveAll = new System.Windows.Forms.ToolStripMenuItem();
             this.AnotherItemToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.AnotherItemToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ContextMenuForRtf = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.CopyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.PasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ContextMenuForPng = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.OpenInPaintToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
-            this.ContextMenuForRtf.SuspendLayout();
-            this.ContextMenuForPng.SuspendLayout();
             this.SuspendLayout();
             // 
             // OpenFiles
@@ -87,7 +80,8 @@ namespace NotepadMinusMinus
             this.OpenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FileToolStripMenuItem,
             this.FolderToolStripMenuItem,
-            this.NewFileToolStripMenuItem});
+            this.NewFileToolStripMenuItem,
+            this.CopiedImageToolStripMenuItem});
             this.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem";
             this.OpenToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.OpenToolStripMenuItem.Size = new System.Drawing.Size(98, 29);
@@ -97,7 +91,7 @@ namespace NotepadMinusMinus
             // 
             this.FileToolStripMenuItem.Image = global::NotepadMinusMinus.Properties.Resources.File;
             this.FileToolStripMenuItem.Name = "FileToolStripMenuItem";
-            this.FileToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.FileToolStripMenuItem.Size = new System.Drawing.Size(292, 34);
             this.FileToolStripMenuItem.Text = "Файл";
             this.FileToolStripMenuItem.Click += new System.EventHandler(this.MenuItemOpenFile_Click);
             // 
@@ -105,7 +99,7 @@ namespace NotepadMinusMinus
             // 
             this.FolderToolStripMenuItem.Image = global::NotepadMinusMinus.Properties.Resources.Folder;
             this.FolderToolStripMenuItem.Name = "FolderToolStripMenuItem";
-            this.FolderToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.FolderToolStripMenuItem.Size = new System.Drawing.Size(292, 34);
             this.FolderToolStripMenuItem.Text = "Папку";
             this.FolderToolStripMenuItem.Click += new System.EventHandler(this.MenuItemOpenDirectory_Click);
             // 
@@ -113,9 +107,17 @@ namespace NotepadMinusMinus
             // 
             this.NewFileToolStripMenuItem.Image = global::NotepadMinusMinus.Properties.Resources.Plus;
             this.NewFileToolStripMenuItem.Name = "NewFileToolStripMenuItem";
-            this.NewFileToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.NewFileToolStripMenuItem.Size = new System.Drawing.Size(292, 34);
             this.NewFileToolStripMenuItem.Text = "Новый файл";
             this.NewFileToolStripMenuItem.Click += new System.EventHandler(this.MenuItemOpenNewFile_Click);
+            // 
+            // CopiedImageToolStripMenuItem
+            // 
+            this.CopiedImageToolStripMenuItem.Image = global::NotepadMinusMinus.Properties.Resources.Image;
+            this.CopiedImageToolStripMenuItem.Name = "CopiedImageToolStripMenuItem";
+            this.CopiedImageToolStripMenuItem.Size = new System.Drawing.Size(292, 34);
+            this.CopiedImageToolStripMenuItem.Text = "Скопированное фото";
+            this.CopiedImageToolStripMenuItem.Click += new System.EventHandler(this.CopiedImageToolStripMenuItem_Click);
             // 
             // MenuItemSaveFile
             // 
@@ -146,42 +148,6 @@ namespace NotepadMinusMinus
             this.AnotherItemToolStripMenuItem3.Size = new System.Drawing.Size(132, 29);
             this.AnotherItemToolStripMenuItem3.Text = "Еще условие";
             // 
-            // ContextMenuForRtf
-            // 
-            this.ContextMenuForRtf.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.ContextMenuForRtf.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CopyToolStripMenuItem,
-            this.PasteToolStripMenuItem});
-            this.ContextMenuForRtf.Name = "contextMenuStrip1";
-            this.ContextMenuForRtf.Size = new System.Drawing.Size(193, 68);
-            // 
-            // CopyToolStripMenuItem
-            // 
-            this.CopyToolStripMenuItem.Name = "CopyToolStripMenuItem";
-            this.CopyToolStripMenuItem.Size = new System.Drawing.Size(192, 32);
-            this.CopyToolStripMenuItem.Text = "Скопировать";
-            // 
-            // PasteToolStripMenuItem
-            // 
-            this.PasteToolStripMenuItem.Name = "PasteToolStripMenuItem";
-            this.PasteToolStripMenuItem.Size = new System.Drawing.Size(192, 32);
-            this.PasteToolStripMenuItem.Text = "Вставить";
-            // 
-            // ContextMenuForPng
-            // 
-            this.ContextMenuForPng.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.ContextMenuForPng.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.OpenInPaintToolStripMenuItem});
-            this.ContextMenuForPng.Name = "contextMenuForPng";
-            this.ContextMenuForPng.Size = new System.Drawing.Size(213, 36);
-            // 
-            // OpenInPaintToolStripMenuItem
-            // 
-            this.OpenInPaintToolStripMenuItem.Name = "OpenInPaintToolStripMenuItem";
-            this.OpenInPaintToolStripMenuItem.Size = new System.Drawing.Size(212, 32);
-            this.OpenInPaintToolStripMenuItem.Text = "Открыть в Paint";
-            this.OpenInPaintToolStripMenuItem.Click += new System.EventHandler(this.OpenInPaintToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
@@ -194,8 +160,6 @@ namespace NotepadMinusMinus
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.ContextMenuForRtf.ResumeLayout(false);
-            this.ContextMenuForPng.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -212,11 +176,7 @@ namespace NotepadMinusMinus
         private System.Windows.Forms.ToolStripMenuItem FileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem FolderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem NewFileToolStripMenuItem;
-        private System.Windows.Forms.ContextMenuStrip ContextMenuForRtf;
-        private System.Windows.Forms.ToolStripMenuItem CopyToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem PasteToolStripMenuItem;
-        private System.Windows.Forms.ContextMenuStrip ContextMenuForPng;
-        private System.Windows.Forms.ToolStripMenuItem OpenInPaintToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem CopiedImageToolStripMenuItem;
     }
 }
 
