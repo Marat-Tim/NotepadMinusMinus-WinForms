@@ -22,7 +22,7 @@ namespace NotepadMinusMinus
             {
                 Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right,
                 Dock = DockStyle.Fill,
-                Font = Constants.FontForRtf,
+                Font = Constants.DefaultFontForRtf,
                 AcceptsTab = true
             };
             richTextBox.TextChanged += Changed;

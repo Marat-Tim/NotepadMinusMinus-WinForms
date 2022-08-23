@@ -50,11 +50,11 @@ namespace NotepadMinusMinus
             };
             foreach (var color in Constants.ColorsForRtf)
             {
-                Bitmap image = new Bitmap(512, 512);
+                Bitmap image = new Bitmap(1, 1);
                 using (Graphics gfx = Graphics.FromImage(image))
                 using (SolidBrush brush = new SolidBrush(color))
                 {
-                    gfx.FillRectangle(brush, 0, 0, 512, 512);
+                    gfx.FillRectangle(brush, 0, 0, 1, 1);
                 }
                 menuItemColor.DropDownItems.Add(
                     CreateMenuItem(color.Name, image, ColorClick(color), color: color));
@@ -62,18 +62,87 @@ namespace NotepadMinusMinus
             menuItemColor.DropDownItems.Add(
                 CreateMenuItem("Продвинутое меню", Properties.Resources.Menu, OpenSuperColorMenu));
 
+            // Выбор размера шрифта
+            var menuItemFontSize = new ToolStripComboBox
+            {
+            };
+            menuItemFontSize.Items.AddRange(Constants.FontSizesForRtf);
+            menuItemFontSize.SelectedIndexChanged += ChangeSelectionFontSizeByClick;
+            menuItemFontSize.KeyUp += ChangeSelectionFontSize;
+
             // Само меню.
             var contextMenu = new ContextMenuStrip();
             contextMenu.Items.AddRange(new ToolStripItem[]
             {
-                menuItemFont,
+                CreateMenuItem("Жирный текст", Properties.Resources.BoldStyle, BoldFontClick),
                 menuItemColor,
+                menuItemFont,
+                menuItemFontSize,
+                new ToolStripSeparator(),
                 CreateMenuItem("Скопировать", Properties.Resources.Copy, CopyClick),
                 CreateMenuItem("Вставить", Properties.Resources.Paste, PasteClick),
                 CreateMenuItem("Выделить всё", null, SelectAllClick),
                 CreateMenuItem("Удалить", Properties.Resources.Delete, DeleteClick)
             });
+            contextMenu.Opened += DetectFontSize;
             return contextMenu;
+        }
+
+        private void DetectFontSize(object sender, EventArgs e)
+        {
+            ((ToolStripComboBox)((ContextMenuStrip)sender).Items[3]).Text = 
+                MainRichTextBox.SelectionFont?.Size.ToString();
+        }
+
+        /// <summary>
+        /// Меняет размер шрифта выделенного текста при выборе размера из списка доступных.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ChangeSelectionFontSizeByClick(object sender, EventArgs e)
+        {
+            if (MainRichTextBox.SelectionFont != null)
+            {
+                MainRichTextBox.SelectionFont =
+                    new Font(MainRichTextBox.SelectionFont.FontFamily,
+                    (int)(((ToolStripComboBox)sender).SelectedItem));
+            }
+        }
+
+        /// <summary>
+        /// Меняет размер шрифта выделенного текста при ручном вводе размера и нажатии enter.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ChangeSelectionFontSize(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (MainRichTextBox.SelectionFont != null)
+                {
+                    int size;
+                    if (MainRichTextBox.SelectionFont != null && int.TryParse(((ToolStripComboBox)sender).Text, out size))
+                    {
+                        MainRichTextBox.SelectionFont =
+                            new Font(MainRichTextBox.SelectionFont.FontFamily,
+                            size);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Изменяет стиль текста на жирный.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BoldFontClick(object sender, EventArgs e)
+        {
+            if (MainRichTextBox.SelectionFont != null)
+            {
+                MainRichTextBox.SelectionFont =
+                    new Font(MainRichTextBox.SelectionFont, MainRichTextBox.SelectionFont.Style | FontStyle.Bold);
+            }
         }
 
         /// <summary>

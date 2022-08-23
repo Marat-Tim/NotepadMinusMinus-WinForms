@@ -122,6 +122,10 @@ namespace NotepadMinusMinus
                 {
                     SaveFile();
                 }
+                if (dialog == DialogResult.Cancel)
+                {
+                    return;
+                }
             }
             ((TabControl)Parent).TabPages.Remove(this);
         }

@@ -29,6 +29,7 @@ namespace NotepadMinusMinus
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.OpenFiles = new System.Windows.Forms.TabControl();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.OpenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -38,8 +39,6 @@ namespace NotepadMinusMinus
             this.CopiedImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemSaveFile = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemSaveAll = new System.Windows.Forms.ToolStripMenuItem();
-            this.AnotherItemToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.AnotherItemToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,9 +65,7 @@ namespace NotepadMinusMinus
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.OpenToolStripMenuItem,
             this.MenuItemSaveFile,
-            this.MenuItemSaveAll,
-            this.AnotherItemToolStripMenuItem2,
-            this.AnotherItemToolStripMenuItem3});
+            this.MenuItemSaveAll});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1328, 33);
@@ -84,7 +81,7 @@ namespace NotepadMinusMinus
             this.CopiedImageToolStripMenuItem});
             this.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem";
             this.OpenToolStripMenuItem.Size = new System.Drawing.Size(98, 29);
-            this.OpenToolStripMenuItem.Text = "&Открыть";
+            this.OpenToolStripMenuItem.Text = "Открыть";
             // 
             // FileToolStripMenuItem
             // 
@@ -100,8 +97,9 @@ namespace NotepadMinusMinus
             // 
             this.FolderToolStripMenuItem.Image = global::NotepadMinusMinus.Properties.Resources.Folder;
             this.FolderToolStripMenuItem.Name = "FolderToolStripMenuItem";
-            this.FolderToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+D";
-            this.FolderToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
+            this.FolderToolStripMenuItem.ShortcutKeyDisplayString = "";
+            this.FolderToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.O)));
             this.FolderToolStripMenuItem.Size = new System.Drawing.Size(348, 34);
             this.FolderToolStripMenuItem.Text = "Папку";
             this.FolderToolStripMenuItem.Click += new System.EventHandler(this.MenuItemOpenDirectory_Click);
@@ -130,7 +128,7 @@ namespace NotepadMinusMinus
             this.MenuItemSaveFile.Name = "MenuItemSaveFile";
             this.MenuItemSaveFile.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.MenuItemSaveFile.Size = new System.Drawing.Size(114, 29);
-            this.MenuItemSaveFile.Text = "&Сохранить";
+            this.MenuItemSaveFile.Text = "Сохранить";
             this.MenuItemSaveFile.Click += new System.EventHandler(this.MenuItemSaveFile_Click);
             // 
             // MenuItemSaveAll
@@ -139,20 +137,8 @@ namespace NotepadMinusMinus
             this.MenuItemSaveAll.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.S)));
             this.MenuItemSaveAll.Size = new System.Drawing.Size(146, 29);
-            this.MenuItemSaveAll.Text = "&Сохранить всё";
+            this.MenuItemSaveAll.Text = "Сохранить всё";
             this.MenuItemSaveAll.Click += new System.EventHandler(this.MenuItemSaveAll_Click);
-            // 
-            // AnotherItemToolStripMenuItem2
-            // 
-            this.AnotherItemToolStripMenuItem2.Name = "AnotherItemToolStripMenuItem2";
-            this.AnotherItemToolStripMenuItem2.Size = new System.Drawing.Size(96, 29);
-            this.AnotherItemToolStripMenuItem2.Text = "Закрыть";
-            // 
-            // AnotherItemToolStripMenuItem3
-            // 
-            this.AnotherItemToolStripMenuItem3.Name = "AnotherItemToolStripMenuItem3";
-            this.AnotherItemToolStripMenuItem3.Size = new System.Drawing.Size(132, 29);
-            this.AnotherItemToolStripMenuItem3.Text = "Еще условие";
             // 
             // MainForm
             // 
@@ -161,6 +147,7 @@ namespace NotepadMinusMinus
             this.ClientSize = new System.Drawing.Size(1328, 744);
             this.Controls.Add(this.OpenFiles);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "Notepad--";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
@@ -177,8 +164,6 @@ namespace NotepadMinusMinus
         private System.Windows.Forms.ToolStripMenuItem OpenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem MenuItemSaveFile;
         private System.Windows.Forms.ToolStripMenuItem MenuItemSaveAll;
-        private System.Windows.Forms.ToolStripMenuItem AnotherItemToolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem AnotherItemToolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem FileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem FolderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem NewFileToolStripMenuItem;

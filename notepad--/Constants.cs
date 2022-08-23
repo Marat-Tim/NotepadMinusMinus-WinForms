@@ -24,7 +24,7 @@ namespace NotepadMinusMinus
         /// <summary>
         /// Шрифт по умолчанию для rtf файлов.
         /// </summary>
-        public static readonly Font FontForRtf = new Font("Segoe UI", 10f);
+        public static readonly Font DefaultFontForRtf = new Font("Segoe UI", 10f);
 
         /// <summary>
         /// Максимальная отображаемая длина названия файла в меню выбора вкладок.
@@ -65,5 +65,13 @@ namespace NotepadMinusMinus
                 (PictureBoxSizeMode.StretchImage, null, "Широкий"),
                 (PictureBoxSizeMode.Zoom, null, "Нормальный"),
             };
+
+        /// <summary>
+        /// Размеры шрифтов для rtf файлов.
+        /// </summary>
+        public static readonly object[] FontSizesForRtf = new object[]
+        {
+            7, 8, 9, 10, 11, 12, 14, 16, 18, 20, 24, 36, 48, 54, 66, 78, 92
+        };
     }
 }
