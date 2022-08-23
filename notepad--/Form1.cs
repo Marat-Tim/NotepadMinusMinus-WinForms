@@ -35,6 +35,20 @@ namespace NotepadMinusMinus
             }
         }
 
+        protected override bool ProcessCmdKey(ref Message message, Keys keys)
+        {
+            switch (keys)
+            {
+                case Keys.Control | Keys.OemMinus:
+                    if (OpenFiles.TabCount > 0)
+                    {
+                        ((TabWithFile)OpenFiles.SelectedTab).Close();
+                    }
+                    return true; 
+            }
+            return base.ProcessCmdKey(ref message, keys);
+        }
+
         /// <summary>
         /// Создает новую вкладку с файлом.
         /// </summary>
@@ -166,7 +180,10 @@ namespace NotepadMinusMinus
         /// <param name="e"></param>
         private void MenuItemSaveFile_Click(object sender, EventArgs e)
         {
-            ((TabWithFile)OpenFiles.SelectedTab).SaveFile();
+            if (OpenFiles.TabCount > 0)
+            {
+                ((TabWithFile)OpenFiles.SelectedTab).SaveFile();
+            }
         }
 
         /// <summary>

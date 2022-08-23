@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,9 +26,20 @@ namespace NotepadMinusMinus
                 AcceptsTab = true
             };
             richTextBox.TextChanged += Changed;
+            richTextBox.LinkClicked += LinkClicked;
             richTextBox.ContextMenuStrip = CreateContextMenu();
             Controls.Add(richTextBox);
             MainRichTextBox = richTextBox;
+        }
+
+        /// <summary>
+        /// Открывает ссылку из файла в интернете.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LinkClicked(object sender, LinkClickedEventArgs e)
+        {
+            Process.Start("explorer", e.LinkText);
         }
 
         public override void LoadFile(string path)

@@ -83,7 +83,6 @@ namespace NotepadMinusMinus
             this.NewFileToolStripMenuItem,
             this.CopiedImageToolStripMenuItem});
             this.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem";
-            this.OpenToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.OpenToolStripMenuItem.Size = new System.Drawing.Size(98, 29);
             this.OpenToolStripMenuItem.Text = "&Открыть";
             // 
@@ -91,7 +90,9 @@ namespace NotepadMinusMinus
             // 
             this.FileToolStripMenuItem.Image = global::NotepadMinusMinus.Properties.Resources.File;
             this.FileToolStripMenuItem.Name = "FileToolStripMenuItem";
-            this.FileToolStripMenuItem.Size = new System.Drawing.Size(292, 34);
+            this.FileToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+O";
+            this.FileToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.FileToolStripMenuItem.Size = new System.Drawing.Size(348, 34);
             this.FileToolStripMenuItem.Text = "Файл";
             this.FileToolStripMenuItem.Click += new System.EventHandler(this.MenuItemOpenFile_Click);
             // 
@@ -99,7 +100,9 @@ namespace NotepadMinusMinus
             // 
             this.FolderToolStripMenuItem.Image = global::NotepadMinusMinus.Properties.Resources.Folder;
             this.FolderToolStripMenuItem.Name = "FolderToolStripMenuItem";
-            this.FolderToolStripMenuItem.Size = new System.Drawing.Size(292, 34);
+            this.FolderToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+D";
+            this.FolderToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
+            this.FolderToolStripMenuItem.Size = new System.Drawing.Size(348, 34);
             this.FolderToolStripMenuItem.Text = "Папку";
             this.FolderToolStripMenuItem.Click += new System.EventHandler(this.MenuItemOpenDirectory_Click);
             // 
@@ -107,7 +110,9 @@ namespace NotepadMinusMinus
             // 
             this.NewFileToolStripMenuItem.Image = global::NotepadMinusMinus.Properties.Resources.Plus;
             this.NewFileToolStripMenuItem.Name = "NewFileToolStripMenuItem";
-            this.NewFileToolStripMenuItem.Size = new System.Drawing.Size(292, 34);
+            this.NewFileToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+Plus";
+            this.NewFileToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Oemplus)));
+            this.NewFileToolStripMenuItem.Size = new System.Drawing.Size(348, 34);
             this.NewFileToolStripMenuItem.Text = "Новый файл";
             this.NewFileToolStripMenuItem.Click += new System.EventHandler(this.MenuItemOpenNewFile_Click);
             // 
@@ -115,7 +120,8 @@ namespace NotepadMinusMinus
             // 
             this.CopiedImageToolStripMenuItem.Image = global::NotepadMinusMinus.Properties.Resources.Image;
             this.CopiedImageToolStripMenuItem.Name = "CopiedImageToolStripMenuItem";
-            this.CopiedImageToolStripMenuItem.Size = new System.Drawing.Size(292, 34);
+            this.CopiedImageToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
+            this.CopiedImageToolStripMenuItem.Size = new System.Drawing.Size(348, 34);
             this.CopiedImageToolStripMenuItem.Text = "Скопированное фото";
             this.CopiedImageToolStripMenuItem.Click += new System.EventHandler(this.CopiedImageToolStripMenuItem_Click);
             // 
@@ -139,8 +145,8 @@ namespace NotepadMinusMinus
             // AnotherItemToolStripMenuItem2
             // 
             this.AnotherItemToolStripMenuItem2.Name = "AnotherItemToolStripMenuItem2";
-            this.AnotherItemToolStripMenuItem2.Size = new System.Drawing.Size(132, 29);
-            this.AnotherItemToolStripMenuItem2.Text = "Еще условие";
+            this.AnotherItemToolStripMenuItem2.Size = new System.Drawing.Size(96, 29);
+            this.AnotherItemToolStripMenuItem2.Text = "Закрыть";
             // 
             // AnotherItemToolStripMenuItem3
             // 
