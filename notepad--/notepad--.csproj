@@ -5,6 +5,7 @@
     <TargetFramework>net5.0-windows</TargetFramework>
     <RootNamespace>NotepadMinusMinus</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationIcon>таумономикон.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>

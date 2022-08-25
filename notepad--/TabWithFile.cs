@@ -170,20 +170,23 @@ namespace NotepadMinusMinus
         /// <param name="eventHandler">Действие, происходящее при нажатии на кнопку.</param>
         /// <param name="style">Стиль текста на кнопке(нужен для меню выбора стиля).</param>
         /// <param name="color">Цвет текста на кнопке(нужен для меню выбора цвета).</param>
+        /// <param name="shortcutKeys">Сочетание клавиш для использования элемента меню.</param>
         /// <returns>Элемент меню.</returns>
         protected ToolStripMenuItem CreateMenuItem(
             string text,
             Bitmap bitmap,
             EventHandler eventHandler,
             FontStyle style = FontStyle.Regular,
-            Color color = default)
+            Color color = default,
+            Keys shortcutKeys = Keys.None)
         {
             var menuItem = new ToolStripMenuItem()
             {
                 Text = text,
                 Font = new Font(DefaultFont, style),
                 ForeColor = color,
-                Image = bitmap
+                Image = bitmap,
+                ShortcutKeys = shortcutKeys
             };
             menuItem.Click += eventHandler;
             return menuItem;

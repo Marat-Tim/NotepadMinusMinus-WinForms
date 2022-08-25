@@ -27,6 +27,7 @@ namespace NotepadMinusMinus
             };
             richTextBox.TextChanged += Changed;
             richTextBox.ContextMenuStrip = CreateContextMenu();
+            richTextBox.KeyDown += OpenContextMenu;
             Controls.Add(richTextBox);
             MainRichTextBox = richTextBox;
         }

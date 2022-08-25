@@ -11,6 +11,21 @@ namespace NotepadMinusMinus
     partial class TabWithTxt
     {
         /// <summary>
+        /// Открывает контекстное меню при нажатии на Ctrl+M.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OpenContextMenu(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.M)
+            {
+                Point position;
+                WinApi.GetCaretPos(out position);
+                MainRichTextBox.ContextMenuStrip.Show(position);
+            }
+        }
+
+        /// <summary>
         /// Создает контекстное меню, со следующими действиями:
         /// 1. Скопировать выделенный текст;
         /// 2. Вставить текст;

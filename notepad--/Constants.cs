@@ -24,7 +24,7 @@ namespace NotepadMinusMinus
         /// <summary>
         /// Шрифт по умолчанию для rtf файлов.
         /// </summary>
-        public static readonly Font DefaultFontForRtf = new Font("Segoe UI", 10f);
+        public static readonly Font DefaultFontForRtf = new Font("Segoe UI", 12f);
 
         /// <summary>
         /// Максимальная отображаемая длина названия файла в меню выбора вкладок.

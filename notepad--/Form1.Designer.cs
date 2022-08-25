@@ -52,7 +52,7 @@ namespace NotepadMinusMinus
             this.OpenFiles.Location = new System.Drawing.Point(0, 36);
             this.OpenFiles.Name = "OpenFiles";
             this.OpenFiles.SelectedIndex = 0;
-            this.OpenFiles.Size = new System.Drawing.Size(1328, 708);
+            this.OpenFiles.Size = new System.Drawing.Size(1378, 758);
             this.OpenFiles.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.OpenFiles.TabIndex = 1;
             this.OpenFiles.TabStop = false;
@@ -68,7 +68,7 @@ namespace NotepadMinusMinus
             this.MenuItemSaveAll});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1328, 33);
+            this.menuStrip1.Size = new System.Drawing.Size(1378, 33);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -144,7 +144,7 @@ namespace NotepadMinusMinus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1328, 744);
+            this.ClientSize = new System.Drawing.Size(1378, 794);
             this.Controls.Add(this.OpenFiles);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

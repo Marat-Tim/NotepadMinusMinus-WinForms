@@ -12,6 +12,21 @@ namespace NotepadMinusMinus
     partial class TabWithRtf
     {
         /// <summary>
+        /// Открывает контекстное меню при нажатии на Ctrl+M.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OpenContextMenu(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.M)
+            {
+                Point position;
+                WinApi.GetCaretPos(out position);
+                MainRichTextBox.ContextMenuStrip.Show(position);
+            }
+        }
+
+        /// <summary>
         /// Создает контекстное меню, со следующими действиями:
         /// 1. Выбрать стиль текста(набор стилей есть в классе Constants);
         /// 2. Выбрать цвет текста(набор цветов есть в классе Constants);
@@ -74,7 +89,9 @@ namespace NotepadMinusMinus
             var contextMenu = new ContextMenuStrip();
             contextMenu.Items.AddRange(new ToolStripItem[]
             {
-                CreateMenuItem("Жирный текст", Properties.Resources.BoldStyle, BoldFontClick),
+                CreateMenuItem(
+                    "Жирный текст", Properties.Resources.BoldStyle, FontClick(FontStyle.Bold), 
+                    shortcutKeys: Keys.Control | Keys.B),
                 menuItemColor,
                 menuItemFont,
                 menuItemFontSize,
@@ -106,6 +123,7 @@ namespace NotepadMinusMinus
                 MainRichTextBox.SelectionFont =
                     new Font(MainRichTextBox.SelectionFont.FontFamily,
                     (int)(((ToolStripComboBox)sender).SelectedItem));
+                ((ToolStripComboBox)sender).Control.Parent.Focus();
             }
         }
 
@@ -127,6 +145,7 @@ namespace NotepadMinusMinus
                             new Font(MainRichTextBox.SelectionFont.FontFamily,
                             size);
                     }
+                    ((ToolStripComboBox)sender).Control.Parent.Focus();
                 }
             }
         }
