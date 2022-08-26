@@ -36,6 +36,22 @@ namespace NotepadMinusMinus
         }
 
         /// <summary>
+        /// При нажатии на tab пишет 4 пробела вместо табуляции.
+        /// </summary>
+        /// <param name="Msg"></param>
+        /// <param name="KeyData"></param>
+        /// <returns></returns>
+        protected override bool ProcessCmdKey(ref Message Msg, Keys KeyData)
+        {                     
+            if (KeyData == Keys.Tab)
+            {
+                MainRichTextBox.SelectedText += new string(' ', 4);
+                return true;
+            }
+            return base.ProcessCmdKey(ref Msg, KeyData);
+        }
+
+        /// <summary>
         /// Открывает ссылку из файла в интернете.
         /// </summary>
         /// <param name="sender"></param>

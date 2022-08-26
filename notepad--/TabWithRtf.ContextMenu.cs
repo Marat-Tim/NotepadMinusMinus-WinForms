@@ -105,7 +105,12 @@ namespace NotepadMinusMinus
             return contextMenu;
         }
 
-        private void DetectFontSize(object sender, EventArgs e)
+        /// <summary>
+        /// Определяет размер выделенного текста.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+		private void DetectFontSize(object sender, EventArgs e)
         {
             ((ToolStripComboBox)((ContextMenuStrip)sender).Items[3]).Text = 
                 MainRichTextBox.SelectionFont?.Size.ToString();
