@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,19 +37,21 @@ namespace NotepadMinusMinus
         }
 
         /// <summary>
-        /// При нажатии на tab пишет 4 пробела вместо табуляции.
+        /// Обрабатывает нажатие на клавиши:
+        /// 1. При нажатии на Tab пишет 4 пробела вместо табуляции.
         /// </summary>
         /// <param name="Msg"></param>
         /// <param name="KeyData"></param>
         /// <returns></returns>
-        protected override bool ProcessCmdKey(ref Message Msg, Keys KeyData)
-        {                     
-            if (KeyData == Keys.Tab)
+        protected override bool ProcessCmdKey(ref Message message, Keys keys)
+        {
+            switch (keys)
             {
-                MainRichTextBox.SelectedText += new string(' ', 4);
-                return true;
+                case Keys.Tab:
+                    MainRichTextBox.SelectedText = new string(' ', 4);
+                    return true;
             }
-            return base.ProcessCmdKey(ref Msg, KeyData);
+            return base.ProcessCmdKey(ref message, keys);
         }
 
         /// <summary>

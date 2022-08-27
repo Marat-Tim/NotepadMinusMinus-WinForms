@@ -54,6 +54,9 @@ namespace NotepadMinusMinus
                         style));
             }
             menuItemFont.DropDownItems.Add(
+                CreateMenuItem("Regular", null, ReturnFontAndColorToDefault, 
+                shortcutKeys: Keys.Control | Keys.D));
+            menuItemFont.DropDownItems.Add(
                 CreateMenuItem("Продвинутое меню", Properties.Resources.Menu, OpenSuperFontMenu));
             menuItemFont.DropDownOpened += DetectStyle;
 
@@ -78,9 +81,7 @@ namespace NotepadMinusMinus
                 CreateMenuItem("Продвинутое меню", Properties.Resources.Menu, OpenSuperColorMenu));
 
             // Выбор размера шрифта
-            var menuItemFontSize = new ToolStripComboBox
-            {
-            };
+            var menuItemFontSize = new ToolStripComboBox();
             menuItemFontSize.Items.AddRange(Constants.FontSizesForRtf);
             menuItemFontSize.SelectedIndexChanged += ChangeSelectionFontSizeByClick;
             menuItemFontSize.KeyUp += ChangeSelectionFontSize;
@@ -103,6 +104,20 @@ namespace NotepadMinusMinus
             });
             contextMenu.Opened += DetectFontSize;
             return contextMenu;
+        }
+
+        /// <summary>
+        /// Меняет цвет и шрифт выдленного текста к состоянию по умолчанию.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ReturnFontAndColorToDefault(object sender, EventArgs e)
+        {
+            if (MainRichTextBox.SelectionFont != null)
+            {
+                MainRichTextBox.SelectionFont = Constants.DefaultFontForRtf;
+                MainRichTextBox.SelectionColor = Color.Black;
+            }
         }
 
         /// <summary>

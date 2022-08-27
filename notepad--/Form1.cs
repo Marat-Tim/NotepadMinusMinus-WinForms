@@ -35,6 +35,16 @@ namespace NotepadMinusMinus
             }
         }
 
+        /// <summary>
+        /// Обрабатывает нажатие клавиш:
+        /// 1. При нажатии на Ctrl+'+' закрывает текущую вкладку.
+        /// 2. При нажатии на Enter активирует текущую вкладку.
+        /// 3. При нажатии на Escape деактивирует текущую вкладку(путем активации главного окна).
+        /// 4. При нажатии стрелочек меняет вкладку.
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="keys"></param>
+        /// <returns></returns>
         protected override bool ProcessCmdKey(ref Message message, Keys keys)
         {
             switch (keys)
@@ -44,7 +54,34 @@ namespace NotepadMinusMinus
                     {
                         ((TabWithFile)OpenFiles.SelectedTab).Close();
                     }
-                    return true; 
+                    return true;
+                case Keys.Enter:
+                    if (OpenFiles.TabCount > 0 && !OpenFiles.SelectedTab.Controls[0].Focused)
+                    {
+                        OpenFiles.SelectedTab.Controls[0].Select();
+                        return true;
+                    }
+                    break;
+                case Keys.Escape:
+                    OpenFiles.Select();
+                    return true;
+                case Keys.Right:
+                    if (OpenFiles.TabCount > 0 && OpenFiles.Focused)
+                    {
+                        OpenFiles.SelectedIndex = (OpenFiles.SelectedIndex + 1) % OpenFiles.TabCount;
+                        OpenFiles.Select();
+                        return true;
+                    }
+                    break;
+                case Keys.Left:
+                    if (OpenFiles.TabCount > 0 && OpenFiles.Focused)
+                    {
+                        OpenFiles.SelectedIndex =
+                            (OpenFiles.SelectedIndex - 1 + OpenFiles.TabCount) % OpenFiles.TabCount;
+                        OpenFiles.Select();
+                        return true;
+                    }
+                    break;
             }
             return base.ProcessCmdKey(ref message, keys);
         }
