@@ -265,5 +265,15 @@ namespace NotepadMinusMinus
                 OpenFiles.SelectedIndex = OpenFiles.TabCount - 1;
             }
         }
+
+        /// <summary>
+        /// Форматирует содержимое выделенной вкладки.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AutoFormattingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ((TabWithFile)OpenFiles.SelectedTab).AutoFormatting();
+        }
     }
 }

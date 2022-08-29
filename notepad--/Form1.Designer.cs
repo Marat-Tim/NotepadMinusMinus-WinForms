@@ -39,6 +39,7 @@ namespace NotepadMinusMinus
             this.CopiedImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemSaveFile = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemSaveAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.AutoFormattingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,7 +66,8 @@ namespace NotepadMinusMinus
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.OpenToolStripMenuItem,
             this.MenuItemSaveFile,
-            this.MenuItemSaveAll});
+            this.MenuItemSaveAll,
+            this.AutoFormattingToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1378, 33);
@@ -140,6 +142,13 @@ namespace NotepadMinusMinus
             this.MenuItemSaveAll.Text = "Сохранить всё";
             this.MenuItemSaveAll.Click += new System.EventHandler(this.MenuItemSaveAll_Click);
             // 
+            // AutoFormattingToolStripMenuItem
+            // 
+            this.AutoFormattingToolStripMenuItem.Name = "AutoFormattingToolStripMenuItem";
+            this.AutoFormattingToolStripMenuItem.Size = new System.Drawing.Size(211, 29);
+            this.AutoFormattingToolStripMenuItem.Text = "Автоформатирование";
+            this.AutoFormattingToolStripMenuItem.Click += new System.EventHandler(this.AutoFormattingToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
@@ -168,6 +177,7 @@ namespace NotepadMinusMinus
         private System.Windows.Forms.ToolStripMenuItem FolderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem NewFileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem CopiedImageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AutoFormattingToolStripMenuItem;
     }
 }
 

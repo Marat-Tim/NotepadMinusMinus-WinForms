@@ -131,6 +131,11 @@ namespace NotepadMinusMinus
         }
 
         /// <summary>
+        /// Форматирует содержимое файла.
+        /// </summary>
+        public virtual void AutoFormatting() { }
+
+        /// <summary>
         /// Получает от пользователя путь, по которому нужно сохранить файл.
         /// </summary>
         protected void GetPathByDialog()
@@ -152,7 +157,7 @@ namespace NotepadMinusMinus
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected virtual void Changed(object sender, EventArgs e)
+        protected void Changed(object sender, EventArgs e)
         {
             if (IsSave)
             {

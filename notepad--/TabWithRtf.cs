@@ -5,6 +5,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -85,6 +86,25 @@ namespace NotepadMinusMinus
                 MainRichTextBox.SaveFile(Path);
                 IsSave = true;
             }
+        }
+
+        public override void AutoFormatting()
+        {
+            var matches = Regex.Matches(MainRichTextBox.Text, "([Нн]а)?[Пп]ример:?");
+            if (matches.Count > 0)
+            {
+                var selectionStart = MainRichTextBox.SelectionStart;
+                var selectionLength = MainRichTextBox.SelectionLength;
+                IsSave = false;
+                foreach (Match match in Regex.Matches(MainRichTextBox.Text, "([Нн]а)?[Пп]ример:?"))
+                {
+                    MainRichTextBox.Select(match.Index, match.Length);
+                    MainRichTextBox.SelectionFont =
+                        new Font(MainRichTextBox.SelectionFont, MainRichTextBox.SelectionFont.Style | FontStyle.Italic);
+                }
+                MainRichTextBox.Select(selectionStart, selectionLength);
+            }
+            base.AutoFormatting();
         }
     }
 }
