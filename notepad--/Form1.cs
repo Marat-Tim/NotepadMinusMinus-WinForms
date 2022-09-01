@@ -52,7 +52,7 @@ namespace NotepadMinusMinus
                 case Keys.Control | Keys.OemMinus:
                     if (OpenFiles.TabCount > 0)
                     {
-                        ((TabWithFile)OpenFiles.SelectedTab).Close();
+                        ((TabWithFile)OpenFiles.SelectedTab).Close(MessageBoxButtons.YesNoCancel);
                     }
                     return true;
                 case Keys.Enter:
@@ -66,18 +66,17 @@ namespace NotepadMinusMinus
                     OpenFiles.Select();
                     return true;
                 case Keys.Right:
-                    if (OpenFiles.TabCount > 0 && OpenFiles.Focused)
+                    if (OpenFiles.TabCount > 0 && OpenFiles.Focused && OpenFiles.SelectedIndex < OpenFiles.TabCount)
                     {
-                        OpenFiles.SelectedIndex = (OpenFiles.SelectedIndex + 1) % OpenFiles.TabCount;
+                        ++OpenFiles.SelectedIndex;
                         OpenFiles.Select();
                         return true;
                     }
                     break;
                 case Keys.Left:
-                    if (OpenFiles.TabCount > 0 && OpenFiles.Focused)
+                    if (OpenFiles.TabCount > 0 && OpenFiles.Focused && OpenFiles.SelectedIndex > 0)
                     {
-                        OpenFiles.SelectedIndex =
-                            (OpenFiles.SelectedIndex - 1 + OpenFiles.TabCount) % OpenFiles.TabCount;
+                        --OpenFiles.SelectedIndex;
                         OpenFiles.Select();
                         return true;
                     }
@@ -141,9 +140,9 @@ namespace NotepadMinusMinus
         /// <param name="e"></param>
         private void MenuItemOpenDirectory_Click(object sender, EventArgs e)
         {
-            using (var dialog = new FolderBrowserDialog()
+            using (var dialog = new FolderBrowserDialog
             {
-                SelectedPath = Constants.InitialDirectory
+                SelectedPath = Constants.InitialDirectory + "/"
             })
             {
                 if (dialog.ShowDialog() == DialogResult.OK)
@@ -206,7 +205,7 @@ namespace NotepadMinusMinus
                             TextRenderer.MeasureText("\u2715", OpenFiles.Font).Height);
             if (closeButton.Contains(e.Location))
             {
-                ((TabWithFile)OpenFiles.SelectedTab).Close();
+                ((TabWithFile)OpenFiles.SelectedTab).Close(MessageBoxButtons.YesNoCancel);
             }
         }
 
@@ -245,7 +244,7 @@ namespace NotepadMinusMinus
         {
             foreach (TabWithFile tab in OpenFiles.TabPages)
             {
-                tab.Close();
+                tab.Close(MessageBoxButtons.YesNo);
             }
         }
 
@@ -256,7 +255,7 @@ namespace NotepadMinusMinus
         /// <param name="e"></param>
         private void CopiedImageToolStripMenuItem_Click(object sender, EventArgs e)
         {
-#warning Некоторые фотографии не открываются здесь нормально, например https://img.icons8.com/ios/452/image.png. Я как понял это из за проблем ClipBoard'a
+#warning Не работает https://img.icons8.com/ios/452/image.png. Я как понял это из за проблем ClipBoard'a
             if (Clipboard.ContainsImage())
             {
                 var tab = new TabWithPng();

@@ -28,45 +28,48 @@ namespace NotepadMinusMinus
 
         /// <summary>
         /// Создает контекстное меню, со следующими действиями:
-        /// 1. Выбрать стиль текста(набор стилей есть в классе Constants);
-        /// 2. Выбрать цвет текста(набор цветов есть в классе Constants);
-        /// 3. Скопировать выделенный текст;
-        /// 4. Вставить текст;
-        /// 5. Скопировать весь текст;
-        /// 6. Удалить выделеный текст.
+        /// - Выбрать стиль текста(набор стилей есть в классе Constants);
+        /// - Выбрать цвет текста(набор цветов есть в классе Constants);
+        /// - Выбрать размер щрифта(набор размеров есть в классе Constants);
+        /// - Скопировать выделенный текст;
+        /// - Вставить текст;
+        /// - Скопировать весь текст;
+        /// - Удалить выделеный текст.
         /// </summary>
         /// <returns>Контекстное меню.</returns>
         private ContextMenuStrip CreateContextMenu()
         {
-            // Выбор стиля.
+            #region Выбор стиля.
             var menuItemFont = new ToolStripMenuItem
             {
                 Text = "Стиль",
                 Image = Properties.Resources.Font
             };
-            foreach (var style in Constants.StylesForRtf)
+            foreach (var (style, shortcutKeys) in Constants.StylesForRtf)
             {
                 menuItemFont.DropDownItems.Add(
                     CreateMenuItem(
                         style.ToString(),
                         null,
                         FontClick(style),
-                        style));
+                        style,
+                        shortcutKeys: shortcutKeys));
             }
             menuItemFont.DropDownItems.Add(
-                CreateMenuItem("Regular", null, ReturnFontAndColorToDefault, 
-                shortcutKeys: Keys.Control | Keys.D));
+                CreateMenuItem("Regular", null, ReturnFontAndColorToDefault,
+                shortcutKeys: Keys.Control | Keys.R));
             menuItemFont.DropDownItems.Add(
                 CreateMenuItem("Продвинутое меню", Properties.Resources.Menu, OpenSuperFontMenu));
             menuItemFont.DropDownOpened += DetectStyle;
+            #endregion
 
-            // Выбор цвета.
+            #region Выбор цвета.
             var menuItemColor = new ToolStripMenuItem
             {
                 Text = "Цвет",
                 Image = Properties.Resources.ColorPicker
             };
-            foreach (var color in Constants.ColorsForRtf)
+            foreach (var (color, shortcutKeys) in Constants.ColorsForRtf)
             {
                 Bitmap image = new Bitmap(1, 1);
                 using (Graphics gfx = Graphics.FromImage(image))
@@ -75,24 +78,25 @@ namespace NotepadMinusMinus
                     gfx.FillRectangle(brush, 0, 0, 1, 1);
                 }
                 menuItemColor.DropDownItems.Add(
-                    CreateMenuItem(color.Name, image, ColorClick(color), color: color));
+                    CreateMenuItem(color.Name, image, ColorClick(color), 
+                    color: color,
+                    shortcutKeys: shortcutKeys));
             }
             menuItemColor.DropDownItems.Add(
                 CreateMenuItem("Продвинутое меню", Properties.Resources.Menu, OpenSuperColorMenu));
+            #endregion\
 
-            // Выбор размера шрифта
+            #region Выбор размера шрифта.
             var menuItemFontSize = new ToolStripComboBox();
             menuItemFontSize.Items.AddRange(Constants.FontSizesForRtf);
             menuItemFontSize.SelectedIndexChanged += ChangeSelectionFontSizeByClick;
             menuItemFontSize.KeyUp += ChangeSelectionFontSize;
+            #endregion
 
-            // Само меню.
+            #region Само меню.
             var contextMenu = new ContextMenuStrip();
             contextMenu.Items.AddRange(new ToolStripItem[]
             {
-                CreateMenuItem(
-                    "Жирный текст", Properties.Resources.BoldStyle, FontClick(FontStyle.Bold), 
-                    shortcutKeys: Keys.Control | Keys.B),
                 menuItemColor,
                 menuItemFont,
                 menuItemFontSize,
@@ -103,6 +107,8 @@ namespace NotepadMinusMinus
                 CreateMenuItem("Удалить", Properties.Resources.Delete, DeleteClick)
             });
             contextMenu.Opened += DetectFontSize;
+            #endregion
+
             return contextMenu;
         }
 
@@ -127,7 +133,7 @@ namespace NotepadMinusMinus
         /// <param name="e"></param>
 		private void DetectFontSize(object sender, EventArgs e)
         {
-            ((ToolStripComboBox)((ContextMenuStrip)sender).Items[3]).Text = 
+            ((ToolStripComboBox)((ContextMenuStrip)sender).Items[2]).Text =
                 MainRichTextBox.SelectionFont?.Size.ToString();
         }
 
@@ -143,7 +149,7 @@ namespace NotepadMinusMinus
                 MainRichTextBox.SelectionFont =
                     new Font(MainRichTextBox.SelectionFont.FontFamily,
                     (int)(((ToolStripComboBox)sender).SelectedItem));
-                ((ToolStripComboBox)sender).Control.Parent.Focus();
+                ((ToolStripComboBox)sender).Control.Parent.Hide();
             }
         }
 
@@ -156,16 +162,13 @@ namespace NotepadMinusMinus
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (MainRichTextBox.SelectionFont != null)
+                int size;
+                if (MainRichTextBox.SelectionFont != null && int.TryParse(((ToolStripComboBox)sender).Text, out size))
                 {
-                    int size;
-                    if (MainRichTextBox.SelectionFont != null && int.TryParse(((ToolStripComboBox)sender).Text, out size))
-                    {
-                        MainRichTextBox.SelectionFont =
-                            new Font(MainRichTextBox.SelectionFont.FontFamily,
-                            size);
-                    }
-                    ((ToolStripComboBox)sender).Control.Parent.Focus();
+                    MainRichTextBox.SelectionFont =
+                        new Font(MainRichTextBox.SelectionFont.FontFamily,
+                        size);
+                    ((ToolStripComboBox)sender).Control.Parent.Hide();   
                 }
             }
         }
@@ -237,7 +240,7 @@ namespace NotepadMinusMinus
             {
                 ((ToolStripMenuItem)((ToolStripMenuItem)sender).DropDownItems[i]).Checked =
                     MainRichTextBox.SelectionFont != null &&
-                    MainRichTextBox.SelectionFont.Style.HasFlag(Constants.StylesForRtf[i]);
+                    MainRichTextBox.SelectionFont.Style.HasFlag(Constants.StylesForRtf[i].style);
             }
         }
 

@@ -34,32 +34,33 @@ namespace NotepadMinusMinus
         public const int MaxNumberOfSymbolsInFileName = 20;
 
         /// <summary>
-        /// Все стили текста, которые используются в контекстноем меню в rtf файлах.
+        /// Все стили текста, которые используются в контекстноем меню в rtf файлах и сочетание клавиш для них.
         /// </summary>
-        public static readonly FontStyle[] StylesForRtf = new FontStyle[]
+        public static readonly (FontStyle style, Keys keys)[] StylesForRtf = new (FontStyle, Keys)[]
         {
-            FontStyle.Bold,
-            FontStyle.Italic,
-            FontStyle.Underline,
-            FontStyle.Strikeout
+            (FontStyle.Bold, Keys.Control | Keys.B),
+            (FontStyle.Italic, Keys.Control | Keys.I),
+            (FontStyle.Underline, Keys.None),
+            (FontStyle.Strikeout, Keys.None)
         };
 
         /// <summary>
         /// Все цвета, которые используются в контекстноем меню в rtf файлах.
         /// </summary>
-        public static readonly Color[] ColorsForRtf = new Color[]
-        {
-            Color.Red,
-            Color.Blue,
-            Color.LimeGreen,
-            Color.Magenta,
-            Color.Black,
-        };
+        public static readonly (Color color, Keys shortcutKeys)[] ColorsForRtf =
+            new (Color color, Keys shortcutKeys)[] 
+            {
+                (Color.Red, Keys.Control | Keys.D1),
+                (Color.Blue, Keys.Control | Keys.D2),
+                (Color.LimeGreen, Keys.Control | Keys.D3),
+                (Color.Magenta, Keys.Control | Keys.D4),
+                (Color.Black, Keys.Control | Keys.D5)
+            };
 
         /// <summary>
         /// Режимы отображения картинок для png файлов, а также иконки и навзания для них.
         /// </summary>
-        public static readonly (PictureBoxSizeMode, Bitmap, string)[] SizeModesForPng =
+        public static readonly (PictureBoxSizeMode sizeMode, Bitmap icon, string name)[] SizeModesForPng =
             new (PictureBoxSizeMode, Bitmap, string)[]
             {
                 (PictureBoxSizeMode.StretchImage, null, "Широкий"),

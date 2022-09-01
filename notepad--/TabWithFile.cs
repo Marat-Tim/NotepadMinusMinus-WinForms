@@ -112,12 +112,12 @@ namespace NotepadMinusMinus
         /// <summary>
         /// Если файл не сохранен, то предлагает пользователю сохранить файл.
         /// </summary>
-        public virtual void Close()
+        public virtual void Close(MessageBoxButtons buttons)
         {
             if (!IsSave)
             {
                 var dialog = MessageBox.Show($"Хотите сохранить изменения в файле {Path ?? Text[1..]}",
-                    "Сохранить изменения?", MessageBoxButtons.YesNoCancel);
+                    "Сохранить изменения?", buttons);
                 if (dialog == DialogResult.Yes)
                 {
                     SaveFile();

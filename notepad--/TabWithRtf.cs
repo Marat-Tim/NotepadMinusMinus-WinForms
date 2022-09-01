@@ -11,7 +11,6 @@ using System.Windows.Forms;
 
 namespace NotepadMinusMinus
 {
-
     [ExtensionOfFile(".rtf")]
     partial class TabWithRtf : TabWithFile
     {
@@ -40,12 +39,27 @@ namespace NotepadMinusMinus
         /// <summary>
         /// Обрабатывает нажатие на клавиши:
         /// 1. При нажатии на Tab пишет 4 пробела вместо табуляции.
+        /// 2. При вводе \up, \down, ->, <- превращает их в соответствующие стрелочки.
+        /// 3. При вводе !=, >=, <= превращает их в соответсвующие математические символы.
+        /// 4. При вводе решетки выделяет ее красным жирным цветом.
         /// </summary>
         /// <param name="Msg"></param>
         /// <param name="KeyData"></param>
         /// <returns></returns>
         protected override bool ProcessCmdKey(ref Message message, Keys keys)
         {
+            if (ReplaceControlTextWithValue(keys, @"\up", "\u2191") ||
+                ReplaceControlTextWithValue(keys, @"\down", "\u2193") ||
+                ReplaceControlTextWithValue(keys, @"->", "\u2192") ||
+                ReplaceControlTextWithValue(keys, @"<-", "\u2190") ||
+                ReplaceControlTextWithValue(keys, @"!=", "\u2260") ||
+                ReplaceControlTextWithValue(keys, @">=", "\u2265") ||
+                ReplaceControlTextWithValue(keys, @"<=", "\u2264") ||
+                ReplaceControlTextWithValue(keys, @"#", "#", FontStyle.Bold, Color.Red)
+                )
+            {
+                return true;
+            }
             switch (keys)
             {
                 case Keys.Tab:
@@ -53,6 +67,39 @@ namespace NotepadMinusMinus
                     return true;
             }
             return base.ProcessCmdKey(ref message, keys);
+        }
+
+        /// <summary>
+        /// Заменяет управляющий текст на значение этого управляющего текста.
+        /// </summary>
+        /// <param name="keys">Нажатые клавиши.</param>
+        /// <param name="controlText">Управляющий текст.</param>
+        /// <param name="value">На что должен заменяться управляющий текст.</param>
+        /// <returns>Истина, если замена произошла, иначе ложь.</returns>
+        private bool ReplaceControlTextWithValue(
+            Keys keys,
+            string controlText,
+            string value,
+            FontStyle style = FontStyle.Regular,
+            Color color = default)
+        {
+            if (WinApi.KeyCodeToUnicode(keys) == controlText[^1].ToString() &&
+                MainRichTextBox.SelectionStart >= controlText.Length - 1 &&
+                MainRichTextBox.Text[
+                    (MainRichTextBox.SelectionStart - controlText.Length + 1)..(MainRichTextBox.SelectionStart)] == 
+                    controlText[..^1])
+            {
+                MainRichTextBox.Select(MainRichTextBox.SelectionStart - controlText.Length + 1, 
+                    controlText.Length - 1);
+                MainRichTextBox.SelectedText = controlText;
+                MainRichTextBox.Select(MainRichTextBox.SelectionStart - controlText.Length, controlText.Length);
+                MainRichTextBox.SelectionFont = new Font(MainRichTextBox.SelectionFont,
+                    MainRichTextBox.SelectionFont.Style | style);
+                MainRichTextBox.SelectionColor = color;
+                MainRichTextBox.SelectedText = value;
+                return true;
+            }
+            return false;
         }
 
         /// <summary>
@@ -90,13 +137,22 @@ namespace NotepadMinusMinus
 
         public override void AutoFormatting()
         {
-            var matches = Regex.Matches(MainRichTextBox.Text, "([Нн]а)?[Пп]ример:?");
+            HighlightExamplesInItalics();
+            base.AutoFormatting();
+        }
+
+        /// <summary>
+        /// Выделяет слова "пример", "например" и похожие курсивом.
+        /// </summary>
+        private void HighlightExamplesInItalics()
+        {
+            var matches = Regex.Matches(MainRichTextBox.Text, "([Вв] )?([Нн]а)?[Пп]ример:?");
             if (matches.Count > 0)
             {
                 var selectionStart = MainRichTextBox.SelectionStart;
                 var selectionLength = MainRichTextBox.SelectionLength;
                 IsSave = false;
-                foreach (Match match in Regex.Matches(MainRichTextBox.Text, "([Нн]а)?[Пп]ример:?"))
+                foreach (Match match in matches)
                 {
                     MainRichTextBox.Select(match.Index, match.Length);
                     MainRichTextBox.SelectionFont =
@@ -104,7 +160,6 @@ namespace NotepadMinusMinus
                 }
                 MainRichTextBox.Select(selectionStart, selectionLength);
             }
-            base.AutoFormatting();
         }
     }
 }
